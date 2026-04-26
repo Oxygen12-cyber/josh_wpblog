@@ -1,0 +1,30 @@
+name: Android debug
+on:
+  push: 
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup JDK
+        uses: actions/setup-java@4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: make gradle wrapper executable
+        run: chmod +x gradlew
+
+      - name: Upload debug Apk
+        uses: actions/upload-artifact@v4
+        with:
+          name: josh-blog-app
+          path: app/build/outputs/apk/debug/josh-blog-app.apk
+      
