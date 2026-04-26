@@ -21,7 +21,7 @@ class NewsPage extends StatelessWidget {
     this.authorAvatarUrl =
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPO5CvTL79PoqndYQgx3k34A2ETEmkZGCxfg&s",
     this.authorName = "Josh",
-    this.timeText = "3h ag0 . 4mins read",
+    this.timeText = "3h ag0 . 3mins read",
     this.preTitle = "Design",
     this.category = "Design",
   });
