@@ -1,0 +1,29 @@
+services:
+
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: joshua
+      WORDPRESS_DB_PASSWORD: joshua
+      WORDPRESS_DB_NAME: blogdb
+    volumes:
+      - wordpress:/var/www/html
+
+  db:
+    image: mariadb:10.11
+    restart: always
+    environment:
+      MARIADB_DATABASE: blogdb
+      MARIADB_USER: joshua
+      MARIADB_PASSWORD: joshua
+      MARIADB_ROOT_PASSWORD: joshua
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  wordpress:
+  db:
