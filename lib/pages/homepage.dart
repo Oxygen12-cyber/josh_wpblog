@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:josh_wpblog/components/headlinecard.dart';
 import 'package:josh_wpblog/services/apiservice/api.dart';
 import 'package:josh_wpblog/tabpages/foryou.dart';
+import 'package:lottie/lottie.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -48,7 +49,7 @@ class _HomePageState extends State<HomePage>
       Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          backgroundColor: Colors.red[200],
+          backgroundColor: Colors.green[200],
           duration: Durations.extralong3,
           content: Center(
             child: Text(
@@ -132,42 +133,40 @@ class _HomePageState extends State<HomePage>
           SizedBox(height: 22),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 6),
-            child: Flexible(
-              child: TabBar(
-                padding: EdgeInsets.symmetric(horizontal: 6),
-                isScrollable: true,
-                tabAlignment: TabAlignment.start,
-                controller: _tabController,
-                splashFactory: NoSplash.splashFactory,
-                overlayColor: WidgetStateProperty.all(Colors.transparent),
-                indicatorColor: Colors.indigoAccent,
-                labelColor: Colors.indigoAccent,
-                labelStyle: GoogleFonts.poppins(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                ),
-                unselectedLabelStyle: GoogleFonts.poppins(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                ),
-                unselectedLabelColor: Colors.grey,
-                dividerColor: Colors.transparent,
-                indicatorSize: TabBarIndicatorSize.tab,
-                indicatorWeight: 3,
-                indicatorPadding: EdgeInsets.all(0),
-                tabs: [
-                  Tab(
-                    child: Text(
-                      "For You",
-                      //
-                    ),
-                  ),
-                  Tab(child: Text("Popular")),
-                  Tab(child: Text("Trending")),
-                  Tab(child: Text("Categories")),
-                  Tab(child: Text("Following")),
-                ],
+            child: TabBar(
+              padding: EdgeInsets.symmetric(horizontal: 6),
+              isScrollable: true,
+              tabAlignment: TabAlignment.start,
+              controller: _tabController,
+              splashFactory: NoSplash.splashFactory,
+              overlayColor: WidgetStateProperty.all(Colors.transparent),
+              indicatorColor: Colors.indigoAccent,
+              labelColor: Colors.indigoAccent,
+              labelStyle: GoogleFonts.poppins(
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
               ),
+              unselectedLabelStyle: GoogleFonts.poppins(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+              ),
+              unselectedLabelColor: Colors.grey,
+              dividerColor: Colors.transparent,
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicatorWeight: 3,
+              indicatorPadding: EdgeInsets.all(0),
+              tabs: [
+                Tab(
+                  child: Text(
+                    "For You",
+                    //
+                  ),
+                ),
+                Tab(child: Text("Popular")),
+                Tab(child: Text("Trending")),
+                Tab(child: Text("Categories")),
+                Tab(child: Text("Following")),
+              ],
             ),
           ),
           Expanded(
@@ -177,10 +176,18 @@ class _HomePageState extends State<HomePage>
                 controller: _tabController,
                 children: [
                   CustomTabView(),
-                  Text("Following"),
-                  Text("Trending"),
-                  Text("Categories"),
-                  Text("Following"),
+                  Center(
+                    child: LottieBuilder.asset('assets/images/comingsoon.json'),
+                  ),
+                  Center(
+                    child: LottieBuilder.asset('assets/images/comingsoon.json'),
+                  ),
+                  Center(
+                    child: LottieBuilder.asset('assets/images/comingsoon.json'),
+                  ),
+                  Center(
+                    child: LottieBuilder.asset('assets/images/comingsoon.json'),
+                  ),
                 ],
               ),
             ),
@@ -251,6 +258,7 @@ class _HomePageState extends State<HomePage>
                           if (value.length > 12 || value.length < 3) {
                             return 'name should be < 12 and > 3 characters';
                           }
+                          return null;
                         },
                       ),
                     ),

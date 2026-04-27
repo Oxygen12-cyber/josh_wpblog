@@ -81,7 +81,7 @@ class NewsCard extends StatelessWidget {
                   ),
                   SizedBox(height: 2),
                   Text(
-                    title,
+                    title.length > 40 ? title.substring(0, 40) : title,
                     style: GoogleFonts.poppins(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -94,11 +94,15 @@ class NewsCard extends StatelessWidget {
                     child: ListTile(
                       leading: CircleAvatar(
                         radius: 18,
-                        backgroundImage: NetworkImage(authorAvatarUrl),
+                        backgroundImage: CachedNetworkImageProvider(
+                          authorAvatarUrl,
+                        ),
                       ),
                       contentPadding: EdgeInsets.all(0),
                       title: Text(
-                        authorName.trim(),
+                        authorName.length > 8
+                            ? authorName.trim().substring(0, 10)
+                            : authorName,
                         style: GoogleFonts.poppins(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
