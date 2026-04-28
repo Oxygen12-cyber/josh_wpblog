@@ -38,7 +38,20 @@ class _CustomTabViewState extends State<CustomTabView> {
     }
 
     if (postsData.isEmpty) {
-      return const Center(child: Text('No posts found.'));
+      return RefreshIndicator(
+        onRefresh: () => _loadPosts(),
+        color: Colors.black,
+        backgroundColor: Colors.amber,
+        child: ListView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.5,
+              child: const Center(child: Text('No posts found. Pull to refresh.')),
+            ),
+          ],
+        ),
+      );
     }
 
     return RefreshIndicator(
